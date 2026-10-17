@@ -12,9 +12,9 @@
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
 #   annotation-manifest[linux/amd64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:5ca4f281014d78af487a5d3bce226516db44e61d4d0030fc8546eb1736aebaa8
+#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:31fcb9452084b7946efc3ea9ee3bb64046634174d4716fef39ac5560b888a69e
 #   annotation-manifest[linux/arm64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:3230708e2bef2464cbd60d37c495b35a965785cef51928f1b193575bb67d247d
+#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:71befe80e15b6f565294297a06412610b6124a301c5bc7816aba53569edfbfe1
 
 ARG TARGETARCH
 
@@ -42,7 +42,7 @@ GOOS=$TARGETOS GOARCH=$TARGETARCH go build -trimpath -ldflags="-s -w -buildid=" 
 FACTORY_EOF
 
 # ---- app ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:48499cde6a171524f76aa6154b3f67c3c451f793ae662b5695e525e68dcf7b2d
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:f6a0ee0f0f63221790ea8664f922fc836ab28b2e978e53a2623f47a66cbc0fdb
 COPY --link --from=build /out/ /app/
 ENV PORT="8080"
 LABEL "org.opencontainers.image.description"="Checkout service (Go, stack go:1)"
