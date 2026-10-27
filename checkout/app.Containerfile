@@ -7,19 +7,19 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792195200 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1792972800 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true,$ANNOTATIONS
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
 #   annotation-manifest[linux/amd64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:31fcb9452084b7946efc3ea9ee3bb64046634174d4716fef39ac5560b888a69e
+#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:8ac8145642392d63d50ec30d4115d8629f955e88b8205f74c00f04413a30e1a6
 #   annotation-manifest[linux/arm64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:71befe80e15b6f565294297a06412610b6124a301c5bc7816aba53569edfbfe1
+#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:e36ec29dfc43adb3ec439ccf6848219f8528364d5feb9b03823c204ee9c417df
 
 ARG TARGETARCH
 
 # ---- build: stack go ----
-FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:b0c904822c6b1d6054c881b0bb6ffc8aa812067e5361863aaf6d787852e62bf2 AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:cc3bea21a21b64b82ce171dd479c9271f4651dd3461d8a0c9dcb732cdf02e91e AS build
 # never shipped; root so the steps can write /out, /src, and the caches
 USER 0
 ARG TARGETOS TARGETARCH SOURCE_DATE_EPOCH
@@ -42,7 +42,7 @@ GOOS=$TARGETOS GOARCH=$TARGETARCH go build -trimpath -ldflags="-s -w -buildid=" 
 FACTORY_EOF
 
 # ---- app ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:f6a0ee0f0f63221790ea8664f922fc836ab28b2e978e53a2623f47a66cbc0fdb
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:ed43202dfc75a82b26a39afad55f805556c142e8864fbb4a0b3c86ae195027e6
 COPY --link --from=build /out/ /app/
 ENV PORT="8080"
 LABEL "org.opencontainers.image.description"="Checkout service (Go, stack go:1)"
