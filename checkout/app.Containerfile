@@ -7,7 +7,7 @@
 # (moby/buildkit:v0.33.1@sha256:cec9f139f45e93c5c69c60f8b07cfad9f43f4ef6b6a6cd917527fea5ff2e3dea):
 #   buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
 #     --opt platform=linux/amd64,linux/arm64 \
-#     --opt build-arg:SOURCE_DATE_EPOCH=1792972800 \
+#     --opt build-arg:SOURCE_DATE_EPOCH=1793145600 \
 #     --output type=oci,dest=image.tar,rewrite-timestamp=true,$ANNOTATIONS
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
@@ -19,7 +19,7 @@
 ARG TARGETARCH
 
 # ---- build: stack go ----
-FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:cc3bea21a21b64b82ce171dd479c9271f4651dd3461d8a0c9dcb732cdf02e91e AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:2244cff126b0f36762240a2a5c1950f067cc0fb6dde0eae21bc37e02fc29088b AS build
 # never shipped; root so the steps can write /out, /src, and the caches
 USER 0
 ARG TARGETOS TARGETARCH SOURCE_DATE_EPOCH
