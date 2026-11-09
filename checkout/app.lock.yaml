@@ -2,8 +2,8 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 generator: clearcutt-factory v0.4.1
-contentDigest: sha256:6f20fbe41e61e3cdb070f1b22f4b86e7ad0319a0adf5448f089895496f59131e
-inputsDigest: sha256:b317b5d8049489b4e23b062b4005dd90e7004062f32b1d720b841a1513561747
+contentDigest: sha256:f3518f4634fdb0384cda1cab880372d34deeaa51781b876db9673b1be0652615
+inputsDigest: sha256:eefdf328a8c128c1ea11261a9e55ea0be51b902a85a6997846a59bd2b2ea0960
 sourceDateEpoch: 1794096000
 profile:
   ref: ghcr.io/northcutted/clearcutt-showcase/factory/org:1
@@ -20,16 +20,16 @@ builder:
     digest: sha256:24f549a7fcace88e69b9557941168c74645688ecc4acf7fb6d734a6b74e9019d
 base:
   ref: ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-  digest: sha256:e0609a175311b4e7ec37815ce70066f89568338323a391d4a4cc5998fcffbd44
+  digest: sha256:b9be70896a09b0fcc4a4d4efd0d3f08c2fa5dcf5e3821353cde69e240197f834
 app:
   stack: go
-  stackDigest: sha256:bb159644b0c6bfea6f2241b954829a34af9e2dbdac8015e15c5e214a60475206
+  stackDigest: sha256:0363175d201eff311d9dd22d71c3cf83974f2a8fe7b61bac969e9e061b912a67
   stackArtifact:
     ref: ghcr.io/northcutted/clearcutt-showcase/stacks/go:1
-    digest: sha256:4e12bd22ef49656fd9b982101529590ea31a069bd8ab279d99a8e05716bdb529
+    digest: sha256:977e0852fac4ca0c14282aca8e5ed3b4739351d101c1537c527ff4c0771c5367
   build:
-    ref: ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:75733fe6222c397220c49cd6ef19566d5b5a0816a4f82b5fd1737afc2419e12f
-    digest: sha256:75733fe6222c397220c49cd6ef19566d5b5a0816a4f82b5fd1737afc2419e12f
+    ref: ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:d299b07bd8cdc4b9222c8b3beb51e012e168bbdd43958e3f4b96c54babb40560
+    digest: sha256:d299b07bd8cdc4b9222c8b3beb51e012e168bbdd43958e3f4b96c54babb40560
   runPlatforms:
-    linux/amd64: sha256:c8c012a787c0c1459e3b5e6128cdabe9d19f68d1078b62648fe66983f6ab277e
-    linux/arm64: sha256:0797341d103bdfeb7249dc4717178a0a1a2631fe4b7be39372d19c5b36bee55d
+    linux/amd64: sha256:0dbb7780ffb8c6d027580137f2728ef9ee5e7b8aea77e0248c51257641716f95
+    linux/arm64: sha256:b10c6151a67987358864e03fefa6af046753f7d639e0ad79ef7e98e332c1f9c8
