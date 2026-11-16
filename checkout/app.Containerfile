@@ -12,14 +12,14 @@
 # from a context staged with `clearcutt-factory render --context-dir`, where
 # $ANNOTATIONS (comma-separated) records the base for `clearcutt-factory rebase`:
 #   annotation-manifest[linux/amd64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:0dbb7780ffb8c6d027580137f2728ef9ee5e7b8aea77e0248c51257641716f95
+#   annotation-manifest[linux/amd64].org.opencontainers.image.base.digest=sha256:b1e0e93970d16107a07d4c6ab65226cd73e00d5092a89fb9a17628b5f746878f
 #   annotation-manifest[linux/arm64].org.opencontainers.image.base.name=ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:b10c6151a67987358864e03fefa6af046753f7d639e0ad79ef7e98e332c1f9c8
+#   annotation-manifest[linux/arm64].org.opencontainers.image.base.digest=sha256:7e9b515c662e9d72c9d6162fc87bf2a9e04ba5975af95c5eae887a13653ddf82
 
 ARG TARGETARCH
 
 # ---- build: stack go ----
-FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:d299b07bd8cdc4b9222c8b3beb51e012e168bbdd43958e3f4b96c54babb40560 AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:a7743074d625a2c8809bead69104b1c56b4041a2c303653158a9452fa4182f31 AS build
 # never shipped; root so the steps can write /out, /src, and the caches
 USER 0
 ARG TARGETOS TARGETARCH SOURCE_DATE_EPOCH
@@ -42,7 +42,7 @@ GOOS=$TARGETOS GOARCH=$TARGETARCH go build -trimpath -ldflags="-s -w -buildid=" 
 FACTORY_EOF
 
 # ---- app ----
-FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:b9be70896a09b0fcc4a4d4efd0d3f08c2fa5dcf5e3821353cde69e240197f834
+FROM ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1@sha256:950c5371ba0384a60a25af3a5247f10b39ec8b96e0867115cbe9c4671a21abd8
 COPY --link --from=build /out/ /app/
 ENV PORT="8080"
 LABEL "org.opencontainers.image.description"="Checkout service (Go, stack go:1)"
