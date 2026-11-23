@@ -19,7 +19,7 @@
 ARG TARGETARCH
 
 # ---- build: stack go ----
-FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:a7743074d625a2c8809bead69104b1c56b4041a2c303653158a9452fa4182f31 AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:ecf3a135cf352430acd013c4a7e71625ecfdb4a14b80acce58f388bd5bc496b9 AS build
 # never shipped; root so the steps can write /out, /src, and the caches
 USER 0
 ARG TARGETOS TARGETARCH SOURCE_DATE_EPOCH
