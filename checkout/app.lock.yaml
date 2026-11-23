@@ -2,7 +2,7 @@
 apiVersion: factory.clearcutt.dev/v1alpha1
 kind: Lock
 generator: clearcutt-factory v0.4.1
-contentDigest: sha256:be311fca666b987f256f657a2fffec49fe341258dfb988edb3618d2b966326f4
+contentDigest: sha256:63347d23ed3398dc3f381c2e1c32295a1aae489f6e34990e03e5c74953d0216e
 inputsDigest: sha256:74ab8df0f4e950a9b3eecb7e16692f26b40b2608766004b3f4e7e1fa1976ee83
 sourceDateEpoch: 1795305600
 profile:
@@ -20,7 +20,7 @@ builder:
     digest: sha256:be019c1c74fe69204a42c4e10bc4d886a49bf5403ffa74374ef7baa408fc9a26
 base:
   ref: ghcr.io/northcutted/clearcutt-showcase/platform/run-go:1
-  digest: sha256:950c5371ba0384a60a25af3a5247f10b39ec8b96e0867115cbe9c4671a21abd8
+  digest: sha256:fd03d708246875645cd55281004c322c36ec61ad8cd61ebdd26c84d51667937b
 app:
   stack: go
   stackDigest: sha256:e7c1845923488220a33cf095648f6e476bdded2289efa0a20146468d375f6ee9
@@ -31,5 +31,5 @@ app:
     ref: ghcr.io/northcutted/clearcutt-showcase/platform/build-go:1@sha256:a7743074d625a2c8809bead69104b1c56b4041a2c303653158a9452fa4182f31
     digest: sha256:a7743074d625a2c8809bead69104b1c56b4041a2c303653158a9452fa4182f31
   runPlatforms:
-    linux/amd64: sha256:b1e0e93970d16107a07d4c6ab65226cd73e00d5092a89fb9a17628b5f746878f
-    linux/arm64: sha256:7e9b515c662e9d72c9d6162fc87bf2a9e04ba5975af95c5eae887a13653ddf82
+    linux/amd64: sha256:7fa460fb7b0cf41081fccfe73b9202603363ca81a2e1e7b555e0be9a981c955f
+    linux/arm64: sha256:b2fcfcebd21a1973b47e7d18253b21ede6c0830273b72a574774b906abf4db1b
